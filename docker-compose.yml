@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+version: '3.8'
+
+>>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
 services:
   postgres:
     image: postgres:15-alpine
@@ -11,12 +16,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
   redis:
     image: redis:7-alpine
     container_name: signage-redis
     ports:
       - "6379:6379"
     restart: unless-stopped
+<<<<<<< HEAD
   backend:
     build:
       context: ./backend
@@ -62,5 +72,8 @@ services:
     volumes:
       - ./player-web:/app
     restart: unless-stopped
+=======
+
+>>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
 volumes:
   postgres_data:

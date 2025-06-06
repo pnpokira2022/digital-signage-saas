@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "folders": [
     {
       "path": "backend"
@@ -14,4 +15,30 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   }
+=======
+    "folders": [
+        {
+            "path": "frontend"
+        },
+        {
+            "path": "backend"
+        },
+        {
+            "path": "database"
+        }
+    ],
+    "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "files.associations": {
+            "*.css": "tailwindcss"
+        }
+    }
+>>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
 }
