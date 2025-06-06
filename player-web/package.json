@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0",
+  "name": "digital-signage-player-web",
+  "scripts": {
+    "eject": "react-scripts eject",
+    "test": "craco test",
+    "lint": "eslint src --ext .ts,.tsx",
+    "build": "craco build",
+    "start": "craco start"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.53.0",
+    "react-scripts": "^5.0.1"
+  },
+  "dependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "socket.io-client": "^4.7.4",
+    "svgo": "^2.8.0",
+    "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "svgo": "^2.8.0",
+    "postcss": "^8.5.0",
+    "nth-check": "^2.0.1",
+    "css-select": "^4.1.0"
+  },
+  "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

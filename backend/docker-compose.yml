@@ -1,0 +1,69 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: signage-postgres
+    environment:
+      POSTGRES_DB: digital_signage
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    container_name: signage-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - POSTGRES_HOST=postgres
+      - REDIS_HOST=redis
+      - PORT=3001
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=digital_signage
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - REDIS_PORT=6379
+      - JWT_SECRET=your_secure_jwt_secret_here
+    depends_on:
+      - postgres
+      - redis
+    # Remove the volume mount to prevent overwriting compiled files
+    # volumes:
+    #   - ./backend:/app
+    restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    restart: unless-stopped
+  player-web:
+    build:
+      context: ./player-web
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./player-web:/app
+    restart: unless-stopped
+volumes:
+  postgres_data:
