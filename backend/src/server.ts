@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // backend/src/server.ts
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
@@ -6,7 +5,6 @@ import userRoutes from './routes/users';
 
 const app = express();
 
-// Log all incoming requests
 app.use((req: Request, res: Response, next: NextFunction) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url} - Body: ${JSON.stringify(req.body)}`);
   next();
@@ -39,21 +37,3 @@ try {
   console.error('Error during server setup:', error);
   process.exit(1);
 }
-=======
-import express from 'express';
-import cors from 'cors';
-
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-app.use(cors());
-app.use(express.json());
-
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
->>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932

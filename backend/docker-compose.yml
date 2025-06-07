@@ -33,7 +33,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin123
       - REDIS_PORT=6379
-      - JWT_SECRET=your_secure_jwt_secret_here
+      - JWT_SECRET=mySecretKey123!
     depends_on:
       - postgres
       - redis

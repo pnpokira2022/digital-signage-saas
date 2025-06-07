@@ -21,26 +21,26 @@ const UserManagement = () => {
   const [workspaceId, setWorkspaceId] = useState('');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    axios.get('http://localhost:3001/api/users', {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then(res => setUsers(res.data)).catch(err => console.error(err));
-    axios.get('http://localhost:3001/api/users/workspaces', {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then(res => setWorkspaces(res.data)).catch(err => console.error(err));
-  }, []);
+  const token = localStorage.getItem('token');
+  axios.get('http://backend:3001/api/users', {
+    headers: { Authorization: `Bearer ${token}` },
+  }).then(res => setUsers(res.data)).catch(err => console.error(err));
+  axios.get('http://backend:3001/api/users/workspaces', {
+    headers: { Authorization: `Bearer ${token}` },
+  }).then(res => setWorkspaces(res.data)).catch(err => console.error(err));
+}, []);
 
-  const inviteUser = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3001/api/users/invite', { email, role, workspace_id: workspaceId }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      alert('Invitation envoyée');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+const inviteUser = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    await axios.post('http://backend:3001/api/users/invite', { email, role, workspace_id: workspaceId }, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    alert('Invitation envoyée');
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="p-6">

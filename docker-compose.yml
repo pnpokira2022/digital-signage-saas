@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-version: '3.8'
-
->>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
+version: '3.8'  # Add a version for clarity
 services:
   postgres:
     image: postgres:15-alpine
@@ -16,17 +12,12 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
-<<<<<<< HEAD
-=======
-
->>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
   redis:
     image: redis:7-alpine
     container_name: signage-redis
     ports:
       - "6379:6379"
     restart: unless-stopped
-<<<<<<< HEAD
   backend:
     build:
       context: ./backend
@@ -43,12 +34,10 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin123
       - REDIS_PORT=6379
-      - JWT_SECRET=mySecretKey123!
+      - JWT_SECRET=mySecretKey123!  # Match the JWT_SECRET used in backend code
     depends_on:
       - postgres
       - redis
-    volumes:
-      - ./backend:/app
     restart: unless-stopped
   frontend:
     build:
@@ -58,6 +47,8 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+    depends_on:
+      - backend
     volumes:
       - ./frontend:/app
     restart: unless-stopped
@@ -72,8 +63,5 @@ services:
     volumes:
       - ./player-web:/app
     restart: unless-stopped
-=======
-
->>>>>>> 73b8c8a83c26d85f13ed0eef62967cc1813ca932
 volumes:
   postgres_data:
